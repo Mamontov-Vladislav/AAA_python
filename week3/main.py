@@ -34,3 +34,33 @@ class Advert(ColorizeMixin, DictToAtr):
 
     def __repr__(self):
         return '{} | {} ₽'.format(self.title, self.price)
+
+
+if __name__ == '__main__':
+    corgi = {
+        'title': 'Вельш-корги',
+        'price': 1000,
+        'class': 'dogs',
+        'location': {
+            'address': 'город Москва, Лесная, 7',
+            'metro_stations': ['Белорусская']
+        }
+    }
+
+    negative_price_ad = {
+        'title': 'Ничего не делаю',
+        'price': -1,
+        }
+
+    try:
+        bad_ad = Advert(negative_price_ad)
+    except ValueError:
+        print('выбросислось исключение ValueError')
+
+    corgi_ad = Advert(corgi)
+
+    print(corgi_ad.location.address)
+
+    print(corgi_ad.class_)
+
+    print(corgi_ad)
