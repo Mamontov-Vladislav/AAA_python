@@ -11,7 +11,7 @@ class CountVectorizer:
                     self._features[word] = None
         for line in text:
             line_term = []
-            for elem in self._features.keys():
+            for elem in self._features:
                 line_term.append(line.lower().count(elem))
             term_matr.append(line_term)
         return term_matr
