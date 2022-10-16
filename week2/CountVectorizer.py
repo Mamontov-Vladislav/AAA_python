@@ -1,7 +1,7 @@
 class CountVectorizer:
 
     def __init__(self):
-        self._features = dict()
+        self._features = {}
 
     def fit_transform(self, text):
         term_matr = []
