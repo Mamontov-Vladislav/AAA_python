@@ -7,8 +7,7 @@ class CountVectorizer:
         term_matr = []
         for line in text:
             for word in line.lower().split(' '):
-                if word not in self._features:
-                    self._features[word] = None
+                self._features[word] = None
         for line in text:
             line_term = []
             for elem in self._features:
