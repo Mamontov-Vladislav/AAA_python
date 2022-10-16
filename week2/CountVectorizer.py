@@ -1,9 +1,11 @@
 class CountVectorizer:
-
+"""
+Преобразует текстовые данные в числовую матрицу по принципу составления терм-документой матрицы.
+"""
     def __init__(self):
         self._features = {}
 
-    def fit_transform(self, text):
+    def fit_transform(self, text: list) -> list:
         term_matr = []
         for line in text:
             for word in line.lower().split(' '):
@@ -15,7 +17,7 @@ class CountVectorizer:
             term_matr.append(line_term)
         return term_matr
 
-    def get_feature_names(self):
+    def get_feature_names(self) -> list:
         return list(self._features)
 
 
