@@ -19,7 +19,3 @@ class CountVectorizer:
 
     def get_feature_names(self) -> list:
         return list(self._features)
-
-
-if __name__ == '__main__':
-    pass
