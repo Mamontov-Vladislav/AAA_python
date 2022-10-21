@@ -54,7 +54,6 @@ def decode(morse_message: str) -> str:
     return ''.join(decoded_letters)
 
 
-
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
