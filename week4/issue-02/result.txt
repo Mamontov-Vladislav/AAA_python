@@ -1,0 +1,12 @@
+python -m pytest -v test_decode.py                  
+======================================= test session starts ========================================
+platform darwin -- Python 3.9.7, pytest-7.1.3, pluggy-1.0.0 -- /Users/vlad/PycharmProjects/AAA3/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/vlad/PycharmProjects/AAA3
+collected 3 items                                                                                  
+
+test_decode.py::test_decode[... --- ...-SOS] PASSED                                          [ 33%]
+test_decode.py::test_decode[.... . .-.. .-.. ---   .-- --- .-. .-.. -.. ..--..-HELLOWORLD?] PASSED [ 66%]
+test_decode.py::test_decode[-] PASSED                                                        [100%]
+
+======================================== 3 passed in 0.01s =========================================
