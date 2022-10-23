@@ -2,15 +2,15 @@ import keyword
 
 
 class DictToAtr:
-    def __init__(self, _dict):
-        if 'location' in _dict:
-            self.location = DictToAtr(_dict['location'])
-            _dict.pop('location')
-        keys = list(_dict.keys())
+    def __init__(self, lib):
+        keys = list(lib.keys())
         for key in keys:
-            if keyword.iskeyword(key):
-                _dict[key + '_'] = _dict.pop(key)
-        self.__dict__.update(_dict)
+            if isinstance(lib[key], dict):
+                setattr(self, key, DictToAtr(lib[key]))
+            elif keyword.iskeyword(key):
+                setattr(self, key + '_', lib[key])
+            else:
+                setattr(self, key, lib[key])
 
 
 class ColorizeMixin:
@@ -25,12 +25,12 @@ class Advert(ColorizeMixin, DictToAtr):
 
     repr_color_code = 33
 
-    def __init__(self, _dict):
-        if 'price' not in _dict:
-            _dict['price'] = 0
-        if _dict['price'] < 0:
+    def __init__(self, lib):
+        if 'price' not in lib:
+            lib['price'] = 0
+        if lib['price'] < 0:
             raise ValueError('Price must be >= 0')
-        super().__init__(_dict)
+        super().__init__(lib)
 
     def __repr__(self):
         return '{} | {} ₽'.format(self.title, self.price)
@@ -61,6 +61,6 @@ if __name__ == '__main__':
 
     print(corgi_ad.location.address)
 
-    print(corgi_ad.class_)
+    print(corgi_ad.location)
 
     print(corgi_ad)
